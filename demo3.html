@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My E-Commerce Store</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f2f2f2;
+        }
+
+        header {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .search {
+            text-align: center;
+            padding: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            background: white;
+            width: 200px;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 5px gray;
+        }
+
+        .product img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        button {
+            background: blue;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>My E-Commerce Store</h1>
+    <p>Cart: <span id="cart">0</span></p>
+</header>
+
+<div class="search">
+    <input type="text" id="search"
+           placeholder="Search products..."
+           onkeyup="searchProduct()">
+</div>
+
+<div class="products" id="products">
+
+    <div class="product">
+        <img src="https://via.placeholder.com/150">
+        <h3>Smart Watch</h3>
+        <p>₹1500</p>
+        <button onclick="addCart()">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="https://via.placeholder.com/150">
+        <h3>Headphones</h3>
+        <p>₹1000</p>
+        <button onclick="addCart()">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="https://via.placeholder.com/150">
+        <h3>Mobile Phone</h3>
+        <p>₹15000</p>
+        <button onclick="addCart()">Add to Cart</button>
+    </div>
+
+</div>
+
+<script>
+
+let cart = 0;
+
+function addCart() {
+    cart++;
+    document.getElementById("cart").innerText = cart;
+    alert("Product added to cart!");
+}
+
+function searchProduct() {
+
+    let search = document.getElementById("search").value.toLowerCase();
+    let products = document.querySelectorAll(".product");
+
+    products.forEach(function(product) {
+
+        let name = product.querySelector("h3").innerText.toLowerCase();
+
+        if (name.includes(search)) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+
+    });
+}
+
+</script>
+
+</body>
+</html>
